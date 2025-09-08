@@ -3,15 +3,51 @@ import io
 import PyPDF2
 import requests
 
-url = "https://arxiv.org/pdf/2509.05276v1"
-# step 1: Access Pdf via URL
-response = requests.get(url)
-# print(response.content)
+# url = "https://arxiv.org/pdf/2509.05276v1"
+# # step 1: Access Pdf via URL
+# response = requests.get(url)
+# # print(response.content)
 
-# # step 2: convert to bytes
-pdf_file = io.BytesIO(response.content)
-# print(pdf_file)
+# # # step 2: convert to bytes
+# pdf_file = io.BytesIO(response.content)
+# # print(pdf_file)
 
-# step 3: Retrieve text from PDF
-pdf_reader = PyPDF2.PdfReader(pdf_file)
-print(len(pdf_reader.pages))
+# # step 3: Retrieve text from PDF
+# pdf_reader = PyPDF2.PdfReader(pdf_file)
+# # print(len(pdf_reader.pages))
+# num_pages = len(pdf_reader.pages)
+
+# text = ""
+# for i, page in enumerate(pdf_reader.pages, 1):
+#     print(f"Extracting text from page {i}/{num_pages}")
+#     text += page.extract_text() + "\n"
+
+# print(f"Successfully extracted {len(text)} characters of text from PDF")
+
+
+@tool
+def read_pdf(url: str) -> str:
+    """Read and extract text from a PDF file given its URL.
+
+    Args:
+        url: The URL of the PDF file to read
+
+    Returns:
+        The extracted text content from the PDF
+    """
+    try:
+        response = requests.get(url)
+        pdf_file = io.BytesIO(response.content)
+        pdf_reader = PyPDF2.PdfReader(pdf_file)
+        num_pages = len(pdf_reader.pages)
+        text = ""
+        for i, page in enumerate(pdf_reader.pages, 1):
+            print(f"Extracting text from page {i}/{num_pages}")
+            text += page.extract_text() + "\n"
+
+        print(
+            f"Successfully extracted {len(text)} characters of text from PDF")
+        return text.strip()
+    except Exception as e:
+        print(f"Error reading PDF: {str(e)}")
+        raise
