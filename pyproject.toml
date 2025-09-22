@@ -9,6 +9,8 @@ dependencies = [
     "langchain-core>=0.3.75",
     "langchain-google-genai>=2.1.12",
     "langgraph>=0.6.7",
+    "pypdf2>=3.0.1",
     "python-dotenv>=1.1.1",
     "requests>=2.32.5",
+    "streamlit>=1.49.1",
 ]
