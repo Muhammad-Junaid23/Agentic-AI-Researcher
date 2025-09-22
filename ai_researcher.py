@@ -12,7 +12,7 @@ load_dotenv()
 # step2: setup LLM and tools
 tools = [arxiv_search, read_pdf, render_latex_pdf]
 model = ChatGoogleGenerativeAI(
-    model="gemini-2.5-pro", api_key=os.getenv("GOOGLE_API_KEY"))
+    model="gemini-2.0-flash", api_key=os.getenv("GOOGLE_API_KEY"))
 
 # step3: create the react agent graph
 graph = create_react_agent(model, tools=tools)
