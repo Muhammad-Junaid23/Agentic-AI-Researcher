@@ -6,7 +6,7 @@ from langchain_core.messages import AIMessage
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__) 
 
 # Basic app config
 st.set_page_config(page_title="Research AI Agent", page_icon="📄")
