@@ -16,8 +16,8 @@ Built with LangChain, LangGraph, and powered by Google’s Gemini models — thi
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Muhammad-Junaid23/Agentic-AI-Researcher.git
-   cd Agentic-AI-Researcher
+   git clone https://github.com/Muhammad-Junaid23/Researcher-AI.git
+   cd Researcher-AI
    ```
 
 2. Install dependencies with uv (ultra-fast Python package installer):
